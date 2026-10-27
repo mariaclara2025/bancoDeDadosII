@@ -48,3 +48,23 @@ try:
     filmes_anos2000 = collection.find({"lançamento": {"$gte": 2000}})
     for filmes in filmes_anos2000:
         print(f"Segue a lista de filmes anos 2000: \n{filmes_anos2000}")
+
+# EXERCICIO 2
+from decimal import Decimal
+from bson.decimal128 import Decimal128
+from datetime import datetime, timezone
+from datetime import datetime, timezone
+data_atual = datetime.now(timezone.utc)
+
+filtro = {"titulo": {"$eq": "O Chefão"}}
+resultado = collection.find(filtro)
+print(f"Livro buscado {resultado}")
+
+//Maior e menor
+filmes_publiMaior_2000 = collection.find({"lançamento": {"$gte": 2000}})
+filmes_publiMenor_anos2000 = collection.find({"lançamento": {"$lt": 2000}})
+print(f"Livros com ano de publicação inferior a 2000: \n {filmes_publiMaior_2000} \n Ano de puclicação menor que 2000 {filmes_publiMenor_anos2000}")
+
+// Filtros in nin
+filmes_drama = collection.find({"generos":{"$in": "Drama"}})
+filmes_noDrama = collection.find({"generos":{"$nin": "Drama"}})
