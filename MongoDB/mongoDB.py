@@ -13,10 +13,8 @@ try:
     db = client['cinema']
     collection = db['filmes']
 
-    # Limpa a coleção antes de inserir para não duplicar nos testes (opcional)
     collection.delete_many({})
 
-    # Lista base de filmes
     lista_filmes = [
         {
             "titulo": "A Origem",
@@ -86,7 +84,6 @@ try:
     for filme in filmes_acao_aventura:
         print("  ->", filme["titulo"], "| Gêneros:", filme["generos"])
 
-    # 6. SIZE ($size) - Equivalente a "numero de autores" (quantidade exata de gêneros no array)
     filmes_2_generos = collection.find({"generos": {"$size": 2}})
     filmes_3_generos = collection.find({"generos": {"$size": 3}})
 
